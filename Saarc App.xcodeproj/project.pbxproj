@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		FF68C13923918D8200808955 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C13823918D8200808955 /* AppDelegate.swift */; };
 		FF68C13B23918D8200808955 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C13A23918D8200808955 /* SceneDelegate.swift */; };
-		FF68C13D23918D8200808955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C13C23918D8200808955 /* ViewController.swift */; };
-		FF68C14023918D8200808955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF68C13E23918D8200808955 /* Main.storyboard */; };
 		FF68C14223918D8400808955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF68C14123918D8400808955 /* Assets.xcassets */; };
 		FF68C14523918D8400808955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF68C14323918D8400808955 /* LaunchScreen.storyboard */; };
+		FF68C14D23918DBC00808955 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF68C14C23918DBC00808955 /* Main.storyboard */; };
+		FF68C15323918E5B00808955 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C15223918E5B00808955 /* TableViewCell.swift */; };
+		FF68C15523918E7500808955 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C15423918E7500808955 /* ViewController.swift */; };
+		FF68C17723919DB700808955 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C17623919DB700808955 /* AppData.swift */; };
+		FF68C1792391DB7500808955 /* WebTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF68C1782391DB7500808955 /* WebTemplateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF68C13523918D8200808955 /* Saarc App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Saarc App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68C13823918D8200808955 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF68C13A23918D8200808955 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF68C13C23918D8200808955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FF68C13F23918D8200808955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF68C14123918D8400808955 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF68C14423918D8400808955 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF68C14623918D8400808955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF68C14C23918DBC00808955 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FF68C15223918E5B00808955 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FF68C15423918E7500808955 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FF68C17623919DB700808955 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		FF68C1782391DB7500808955 /* WebTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebTemplateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +64,12 @@
 			children = (
 				FF68C13823918D8200808955 /* AppDelegate.swift */,
 				FF68C13A23918D8200808955 /* SceneDelegate.swift */,
-				FF68C13C23918D8200808955 /* ViewController.swift */,
-				FF68C13E23918D8200808955 /* Main.storyboard */,
+				FF68C15223918E5B00808955 /* TableViewCell.swift */,
+				FF68C17623919DB700808955 /* AppData.swift */,
+				FF68C15423918E7500808955 /* ViewController.swift */,
+				FF68C1782391DB7500808955 /* WebTemplateViewController.swift */,
 				FF68C14123918D8400808955 /* Assets.xcassets */,
+				FF68C14C23918DBC00808955 /* Main.storyboard */,
 				FF68C14323918D8400808955 /* LaunchScreen.storyboard */,
 				FF68C14623918D8400808955 /* Info.plist */,
 			);
@@ -125,9 +134,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF68C14D23918DBC00808955 /* Main.storyboard in Resources */,
 				FF68C14523918D8400808955 /* LaunchScreen.storyboard in Resources */,
 				FF68C14223918D8400808955 /* Assets.xcassets in Resources */,
-				FF68C14023918D8200808955 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF68C13D23918D8200808955 /* ViewController.swift in Sources */,
+				FF68C15323918E5B00808955 /* TableViewCell.swift in Sources */,
+				FF68C1792391DB7500808955 /* WebTemplateViewController.swift in Sources */,
+				FF68C17723919DB700808955 /* AppData.swift in Sources */,
 				FF68C13923918D8200808955 /* AppDelegate.swift in Sources */,
+				FF68C15523918E7500808955 /* ViewController.swift in Sources */,
 				FF68C13B23918D8200808955 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FF68C13E23918D8200808955 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF68C13F23918D8200808955 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FF68C14323918D8400808955 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +298,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fahimrahman.Saarc-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fahimrahman.Saarc-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
