@@ -24,13 +24,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         ImageAndNameData(countryImageArray: #imageLiteral(resourceName: "FlagBhutan"), countryNameArray: "ভূটান", capitalNameArray: "রাজধানীঃ থিম্পু"),
         ImageAndNameData(countryImageArray: #imageLiteral(resourceName: "FlagAfghanistan"), countryNameArray: "আফগানিস্তান", capitalNameArray: "রাজধানীঃ কাবুল")
     ]
-
-    @IBOutlet weak var tableView: UITableView!
-   
-    var temp = [String]()
     
-    var countryCode = ["bd","in","pk","lk","np","mv","bt","af"]
-    var zipCode = ["1100","110001","44000","10100","44600","20002","11002","1001"]
+    @IBOutlet weak var tableView: UITableView!
+    
+    var temp = [String]()
+
+    let coordinates = ["lat=24&lon=90","lat=20&lon=77","lat=30&lon=70","lat=7&lon=81","lat=28&lon=84","lat=3.15&lon=73","lat=27.30&lon=90.30","lat=33&lon=65"]
     
     var webView = WebTemplateViewController()
     
@@ -39,91 +38,75 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.indicatorStyle = .white
+        getDataFromServer()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell: TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
-        cell.configure(appData: data[indexPath.row])
-        getDataFromServer(zipCode: zipCode[temp.count], countryCode: countryCode[temp.count])
-        //print(indexPath.row)
-        //cell.tempLabel.text = temp[indexPath.row]
-        print(temp)
+        cell.tintColor = .systemTeal
         
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.toTheWebView(_:)))
-        cell.isUserInteractionEnabled = true
-        cell.contentView.tag = indexPath.row
-        cell.contentView.addGestureRecognizer(tapGestureRecognizer)
+        DispatchQueue.main.async {
+            cell.configure(appData: self.data[indexPath.row])
+            if indexPath.row < self.temp.count {
+                cell.tempLabel.text = self.temp[indexPath.row]
+            }
+        }
         
         return cell
     }
     
-    @objc func toTheWebView(_ sender: AnyObject) {
-         webView = viewPusher()
-
-        if sender.view.tag == 0 {
-             webView.stringValue = "bangladesh"
-         }
-         if sender.view.tag == 1 {
-             webView.stringValue = "india"
-         }
-         if sender.view.tag == 2 {
-             webView.stringValue = "pakistan"
-         }
-         if sender.view.tag == 3 {
-             webView.stringValue = "srilanka"
-         }
-         if sender.view.tag == 4 {
-             webView.stringValue = "nepal"
-         }
-         if sender.view.tag == 5 {
-            webView.stringValue = "maldive"
-         }
-         if sender.view.tag == 6 {
-            webView.stringValue = "bhutan"
-         }
-         if sender.view.tag == 7 {
-            webView.stringValue = "afganistan"
-         }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        webView = webViewPusher()
+        let countries = ["bd","in","pk","sl","np","mv","bh","af"]
+        
+        for i in 0...7{
+            
+            if indexPath.row == i {
+                webView.stringValue = countries[i]
+            }
+        }
     }
     
-    func viewPusher() -> WebTemplateViewController {
-        webView = self.storyboard?.instantiateViewController(identifier: "WebTemplateViewController") as! WebTemplateViewController
-        self.navigationController?.pushViewController(webView, animated: true)
+    func webViewPusher() -> WebTemplateViewController {
         
+        webView = self.storyboard?.instantiateViewController(withIdentifier: "WebTemplateViewController") as! WebTemplateViewController
+        self.navigationController?.pushViewController(webView, animated: true)
         return webView
     }
     
-    func getDataFromServer(zipCode: String, countryCode: String) {
+    
+    func getDataFromServer() {
         
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?zip=\(zipCode),\(countryCode)&units=metric&appid=a8cfe6569f9845178311e7dd8bb31cdf") else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            if let data = data, error == nil {
-                do {
-                    guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
-                    guard let weatherMain = json["main"] as? [String: Any] else { return }
-                    let temp = Int(weatherMain["temp"] as? Double ?? 0)
-                    DispatchQueue.main.async {
-                       // print(temp)
-                        self.temp.append(String("\(temp)"))
-                        //self.tableView.reloadData()
+        for i in 0...7 {
+            guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?\(coordinates[i])&units=metric&appid=6323268a634da5d67187daeaf7e0d1c5") else { return }
+            
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                
+                if let data = data, error == nil {
+                    do {
+                        guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else { return }
+                        guard let weatherMain = json["main"] as? [String: Any] else { return }
+                        let temp = Int(weatherMain["temp"] as? Double ?? 0)
+                        self.temp.append(String("\(temp)° C"))
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
-                   
+                    catch {
+                        print("error")
+                    }
                 }
-                catch {
-                    print("error")
-                }
-            }
+            }.resume()
         }
-        task.resume()
     }
 }

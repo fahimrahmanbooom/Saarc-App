@@ -9,6 +9,7 @@
 import UIKit
 
 struct ImageAndNameData {
+    
     let countryImageArray: UIImage
     let countryNameArray: String
     let capitalNameArray: String

@@ -27,6 +27,7 @@ class TableViewCell: UITableViewCell {
     }
     
     func configure(appData: ImageAndNameData) {
+        
         countryImage.image = appData.countryImageArray
         countryName.text = appData.countryNameArray
         capitalName.text = appData.capitalNameArray
